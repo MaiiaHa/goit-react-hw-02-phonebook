@@ -1,0 +1,15 @@
+.section {
+  width: 500px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: rgb(70, 70, 70);
+  background-color: rgb(253, 253, 242);
+
+  border: 1px solid grey;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.sectionTitle {
+  background-color: rgb(253, 253, 242);
+}
