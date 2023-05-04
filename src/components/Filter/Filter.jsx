@@ -1,12 +1,22 @@
 // import React, { Component } from 'react';
 // import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import css from './Filter.module.css';
+// import { FaSistrix } from 'react-icons/fa';
 
 const Filter = ({ value, onChange }) => {
   return (
-    <label>
-      Find contacts by name
-      <input type="text" name="filter" value={value} onChange={onChange} />
+    <label className={css.inputFind}>
+      {/* <FaSistrix /> */}
+      Find contacts by name:
+      <input
+        className={css.inputFindField}
+        type="text"
+        placeholder="search"
+        name="filter"
+        value={value}
+        onChange={onChange}
+      />
     </label>
   );
 };

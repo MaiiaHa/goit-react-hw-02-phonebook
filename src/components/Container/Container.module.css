@@ -4,12 +4,14 @@
   margin-left: auto;
   margin-right: auto;
 
-  color: rgb(70, 70, 70);
-  background-color: rgb(253, 253, 242);
+  color: #3888cf;
+  background-color: #ffdba1;
 
-  border: 1px solid grey;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #3888cf;
+  box-shadow: 0 4px 4px #c9984b;
 }
 .sectionTitle {
-  background-color: rgb(253, 253, 242);
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
 }
