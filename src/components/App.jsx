@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
 import Container from './Container/Container';
 import ContactForm from './ContactForm/ContactForm';
-// import Filter from './Filter/Filter';
+import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 
 class App extends Component {
@@ -15,41 +16,59 @@ class App extends Component {
     filter: '',
   };
 
+  addContact = ({ name, number }) => {
+    // return this.state.contacts;
+
+    const newUserData = {
+      id: nanoid(10),
+      name,
+      number,
+    };
+
+    this.setState(prevState => ({
+      contacts: [newUserData, ...prevState.contacts],
+    }));
+  };
+  //   addContact = data => {
+  //   console.log(data); // {name: 'knhih', number: '34-34-34'} введені дані
+  //   //з затримкою в асинхронному коді теж працює:
+  //   // setTimeout(() => {
+  //   //   console.log(data);
+  //   // }, 1000);
+  // };
+
+  hendleChangeFilter = event => {
+    event.preventDefault(event);
+    // додаються дані в стейт при вводі (див.фільтр)
+    this.setState({ filter: event.currentTarget.value });
+  };
+
   deleteContact = userId => {
     this.setState(({ contacts }) => ({
       contacts: contacts.filter(({ id }) => userId !== id),
     }));
   };
 
-  newUser = data => {
-    console.log(data);
-    //з затримкою в асинхронному коді теж працює:
-    // setTimeout(() => {
-    //   console.log(data);
-    // }, 1000);
-  };
-
-  addContact = () => {
-    // return this.state.contacts;
-    const newUser = this.state;
-    console.log(newUser);
-
-    this.setState(prevState => ({
-      contacts: [this.state.contacts, ...prevState.contacts],
-    }));
-  };
-
   render() {
+    const normalizedFilter = this.state.filter.toLowerCase();
+    // console.log(normalizedFilter); // дані з фільтру
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+
     return (
       <div>
         <Container title={'Phonebook'}>
-          <ContactForm onSubmit={this.newUser} />
+          <ContactForm onSubmit={this.addContact} />
         </Container>
 
         <Container title={'Contacts'}>
-          {/* <Filter /> */}
+          <Filter
+            value={this.state.filter}
+            onChange={this.hendleChangeFilter}
+          />
           <ContactList
-            contacts={this.state.contacts}
+            contacts={filteredContacts}
             deleteContact={this.deleteContact}
           />
         </Container>
