@@ -25,6 +25,13 @@ class App extends Component {
       number,
     };
 
+    const checkedName = this.state.contacts.find(
+      ({ name }) => name === newUserData.name
+    );
+    if (checkedName) {
+      alert(`${name} is already in list. Please enter other name.`);
+      return;
+    }
     this.setState(prevState => ({
       contacts: [newUserData, ...prevState.contacts],
     }));
@@ -49,12 +56,18 @@ class App extends Component {
     }));
   };
 
-  render() {
-    const normalizedFilter = this.state.filter.toLowerCase();
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
     // console.log(normalizedFilter); // дані з фільтру
-    const filteredContacts = this.state.contacts.filter(contact =>
+
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
+  };
+
+  render() {
+    const filteredContacts = this.getVisibleContacts();
 
     return (
       <div>
