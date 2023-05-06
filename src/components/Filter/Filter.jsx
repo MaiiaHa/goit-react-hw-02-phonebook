@@ -2,12 +2,12 @@
 // import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import css from './Filter.module.css';
-// import { FaSistrix } from 'react-icons/fa';
+import { FaSistrix } from 'react-icons/fa';
 
 const Filter = ({ value, onChange }) => {
   return (
     <label className={css.inputFind}>
-      {/* <FaSistrix /> */}
+      <FaSistrix />
       Find contacts by name:
       <input
         className={css.inputFindField}

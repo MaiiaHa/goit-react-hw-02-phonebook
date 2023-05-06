@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
-// import { FaUserPlus, FaTty, FaUserAlt } from 'react-icons/fa';
+import { FaUserPlus, FaTty, FaUserAlt } from 'react-icons/fa';
 import css from './ContactForm.module.css';
 class ContactForm extends Component {
   state = {
@@ -39,7 +39,7 @@ class ContactForm extends Component {
 
       <form className={css.contacts} action="" onSubmit={this.formSubmit}>
         <label className={css.input} htmlFor={this.nameRandomId}>
-          {/* <FaUserAlt width={160} height={160} /> */}
+          <FaUserAlt width={160} height={160} />
           <span className={css.inputName}>Name:</span>
           <input
             className={css.inputField}
@@ -56,7 +56,7 @@ class ContactForm extends Component {
         </label>
 
         <label className={css.input} htmlFor={this.numberRandomId}>
-          {/* <FaTty /> */}
+          <FaTty />
           <span className={css.inputName}>Number:</span>
           <input
             className={css.inputField}
@@ -73,7 +73,7 @@ class ContactForm extends Component {
         </label>
 
         <button className={css.inputBtn} type="submit">
-          {/* <FaUserPlus /> */}
+          <FaUserPlus />
           Add contact
         </button>
       </form>
